@@ -17,10 +17,11 @@ export default async function Home({
   // debugger;
   // console.log(data);
   return (
-    <ul className="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 my-8 mx-4 justify-items-center">
+    <>
+      <MovieSearch>Search</MovieSearch>
+      <ul className="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 my-8 mx-4 justify-items-center">
       {data.map((movie) => (
         <li key={movie.id} className="h-full w-full">
-          <MovieSearch>Search</MovieSearch>
           <Link href={`/movie/${movie.id}`}>
           <Card className="flex flex-col h-full p-4 bg-white rounded-lg shadow-sm hover:scale-103 hover:shadow-xl transition-all duration-300">
   
@@ -42,6 +43,7 @@ export default async function Home({
           </Link>
         </li>
       ))}
-    </ul>
+      </ul>
+    </>
   );
 }
