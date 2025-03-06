@@ -1,30 +1,33 @@
 "use server"
 import { Movie } from "../../lib/interfaces";
 
-const API_KEY = '0bd07cd4d4166d94ef83bad8d6d24b08'; // Ersätt med din API-nyckel
+const RAW_API_KEY = process.env.RAWG_API_KEY; 
 const BASE_URL = 'https://api.themoviedb.org/3';
-const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=sv-SE`;
+const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${RAW_API_KEY}&language=sv-SE`;
 
 export const fetchMovies = async (page = 1, query?: string, genreId?:string) => {
-    try {
-        let url = "";
+    // try {
+    let url = "";
+
+    console.log(process.env)
+
 
         if (query) {
-            url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=sv-SE&query=${query}&page=${page}}`
+            url = `${BASE_URL}/search/movie?api_key=${RAW_API_KEY}&language=sv-SE&query=${query}&page=${page}}`
         } else if (genreId) {
-            url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=sv-SE&with_genres=${genreId}&page=${page}`;
+            url = `${BASE_URL}/discover/movie?api_key=${RAW_API_KEY}&language=sv-SE&with_genres=${genreId}&page=${page}`;
         } else {
-            url = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=sv-SE&page=${page}`;
+            url = `${BASE_URL}/movie/popular?api_key=${RAW_API_KEY}&language=sv-SE&page=${page}`;
         }
         
         const response = await fetch(url);
         const data = await response.json();
         // const results: Movie[] = await data;
         return data;
-    } catch (error) {
-        console.error("Fel vid hämtning av filmer:", error);
-        return null;
-    }
+    // } catch (error) {
+    //     console.error("Fel vid hämtning av filmer:", error);
+    //     return null;
+    // }
 
 
 }

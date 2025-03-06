@@ -10,7 +10,7 @@ export default function SearchPage() {
     return (
         <main>
             <h1 className="text-center text-2xl font-bold my-6">Sökresultat för: {query}</h1>
-            <MoviesList query={query} />
+            <MoviesList query={query} genreId={null} />
         </main>
     );
 }
