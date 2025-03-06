@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="black" rx="10"/>
+  
+  <!-- Text -->
+  <text x="50%" y="25" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle" alignment-baseline="middle">
+    The Movies
+  </text>
+  
+  <!-- Filmstrip -->
+  <rect x="10" y="40" width="280" height="40" fill="none" stroke="white" stroke-width="3" />
+  <circle cx="25" cy="60" r="5" fill="white"/>
+  <circle cx="55" cy="60" r="5" fill="white"/>
+  <circle cx="85" cy="60" r="5" fill="white"/>
+  <circle cx="115" cy="60" r="5" fill="white"/>
+  <circle cx="145" cy="60" r="5" fill="white"/>
+  <circle cx="175" cy="60" r="5" fill="white"/>
+  <circle cx="205" cy="60" r="5" fill="white"/>
+  <circle cx="235" cy="60" r="5" fill="white"/>
+  <circle cx="265" cy="60" r="5" fill="white"/>
+</svg>
