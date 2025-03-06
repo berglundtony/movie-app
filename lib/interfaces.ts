@@ -20,3 +20,12 @@ export interface searchAndGenreProps {
     query: string | null;
     genreId: string | null;
 }
+
+export interface MovieContextInterface {
+    query: string;
+    genreId: string;
+    wishList: Movie[];
+    changeMovieWishList: (movie: Movie | undefined) => void;
+    movieList: { results: Movie[]; total_pages: number; };
+
+}

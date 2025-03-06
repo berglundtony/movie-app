@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/ui/header";
+import { MovieProvider } from "./providers";
 
 
 
@@ -18,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <div className="my-8 mx-4 ">{children}</div>
+        <MovieProvider>
+          <div className="my-8 mx-4 ">{children}</div>
+        </MovieProvider>
       </body>
     </html>
   );

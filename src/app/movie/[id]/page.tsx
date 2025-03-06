@@ -2,6 +2,7 @@ import { fetchMovie } from "@/src/app/actions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Movie } from "@/lib/interfaces";
 import Image from "next/image";
+import WishlistCheck from "@/components/wishlist_check";
 
 
 export default async function MoviePage({
@@ -18,6 +19,7 @@ export default async function MoviePage({
             {data.title}
           </h1>
         </CardTitle>
+        <WishlistCheck params={{ id }} />
       </CardHeader>
       <CardContent className="space-y-4 grid grid-cols-1 sm:grid-cols-2">
           <>
