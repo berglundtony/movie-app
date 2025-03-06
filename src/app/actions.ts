@@ -9,9 +9,6 @@ export const fetchMovies = async (page = 1, query?: string, genreId?:string) => 
     // try {
     let url = "";
 
-    console.log(process.env)
-
-
         if (query) {
             url = `${BASE_URL}/search/movie?api_key=${RAW_API_KEY}&language=sv-SE&query=${query}&page=${page}}`
         } else if (genreId) {
@@ -20,7 +17,13 @@ export const fetchMovies = async (page = 1, query?: string, genreId?:string) => 
             url = `${BASE_URL}/movie/popular?api_key=${RAW_API_KEY}&language=sv-SE&page=${page}`;
         }
         
-        const response = await fetch(url);
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        console.error('HTTP Error:', response.status);
+        return;
+    }
+
         const data = await response.json();
         // const results: Movie[] = await data;
         return data;
@@ -33,14 +36,14 @@ export const fetchMovies = async (page = 1, query?: string, genreId?:string) => 
 }
 
 export const fetchMovie = async (id: string) => {
-    const res = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=sv-SE`);
+    const res = await fetch(`${BASE_URL}/movie/${id}?api_key=${RAW_API_KEY}&language=sv-SE`);
     //TODO: check if data is ok
     const data: Movie= await res.json();
     return data;
 }
 
 export const fetchSearchMovie = async (query: string) => {
-    const res = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
+    const res = await fetch(`${BASE_URL}/search/movie?api_key=${RAW_API_KEY}&query=${query}`);
     const data = await res.json();
     const filteredMovies = await data.results.filter((movie: Movie) => movie.title && movie.poster_path);
     const results: Movie[] = filteredMovies;
@@ -60,7 +63,7 @@ export const fetchGenres = async () => {
 
 export async function fetchMoviesByGenre(genreId: string) {
     try {
-        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=sv-SE&with_genres=${genreId}`;
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${RAW_API_KEY}&language=sv-SE&with_genres=${genreId}`;
         const response = await fetch(url);
         const data = await response.json();
         console.log('Filmer:', data.results);

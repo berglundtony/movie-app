@@ -20,3 +20,8 @@ export interface searchAndGenreProps {
     query: string | null;
     genreId: string | null;
 }
+
+export interface MovieContextInterface {
+    wishList: Movie[];
+    changeMovieWishList: ((movie: Movie | undefined) => void)
+}
