@@ -9,6 +9,7 @@ export const fetchMovies = async (page = 1, query?: string, genreId?: string) =>
     // try {
     let url = "";
 
+<<<<<<< HEAD
     if (query) {
         url = `${BASE_URL}/search/movie?api_key=${RAW_API_KEY}&language=sv-SE&query=${query}&page=${page}}`
     } else if (genreId) {
@@ -17,6 +18,16 @@ export const fetchMovies = async (page = 1, query?: string, genreId?: string) =>
         url = `${BASE_URL}/movie/popular?api_key=${RAW_API_KEY}&language=sv-SE&page=${page}`;
     }
 
+=======
+        if (query) {
+            url = `${BASE_URL}/search/movie?api_key=${RAW_API_KEY}&language=sv-SE&query=${query}&page=${page}}`
+        } else if (genreId) {
+            url = `${BASE_URL}/discover/movie?api_key=${RAW_API_KEY}&language=sv-SE&with_genres=${genreId}&page=${page}`;
+        } else {
+            url = `${BASE_URL}/movie/popular?api_key=${RAW_API_KEY}&language=sv-SE&page=${page}`;
+        }
+        
+>>>>>>> fa7b1c3b50958ebb11d3b00bf7e6dd0efda17dab
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -24,9 +35,15 @@ export const fetchMovies = async (page = 1, query?: string, genreId?: string) =>
         return;
     }
 
+<<<<<<< HEAD
     const data = await response.json();
     // const results: Movie[] = await data;
     return data;
+=======
+        const data = await response.json();
+        // const results: Movie[] = await data;
+        return data;
+>>>>>>> fa7b1c3b50958ebb11d3b00bf7e6dd0efda17dab
     // } catch (error) {
     //     console.error("Fel vid hämtning av filmer:", error);
     //     return null;
